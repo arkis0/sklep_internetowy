@@ -1,0 +1,37 @@
+nav ul {
+  margin-bottom: 40px;
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  text-decoration: none;
+}
+
+#form-center {
+  width: 50%;
+  margin-top: 20px;
+}
+
+tr,
+table {
+  width: 100%;
+}
+
+td,
+tr,
+table {
+  border-width: 0px;
+}
+
+.personal-info-td {
+  width: 33%;
+}
+
+.adres-info-td {
+  width: 20%;
+}
+.transport{
+  width: 50%;
+}

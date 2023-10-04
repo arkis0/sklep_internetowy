@@ -1,0 +1,39 @@
+header{
+  background-color: orange;
+  color: white;
+  padding: 20px;
+  text-align: left;
+}
+
+footer{
+  background-color: gray;
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+table{
+border-width: 1px;
+border-style: solid;
+}
+#checkout-btn{
+float: right;
+}
+td{
+text-align: center;
+vertical-align: middle;
+}
+#obraz {
+height: 150px;
+width: auto;
+object-fit: contain;
+}
+nav ul{
+margin-bottom: 40px;
+list-style: none;
+padding: 0;
+}
+nav ul li{
+display: inline;
+text-decoration: none;
+}
