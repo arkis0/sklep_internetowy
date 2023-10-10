@@ -1,4 +1,4 @@
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <?php
 include('../admin/connect.php');
 
@@ -35,26 +35,14 @@ if(isset($_POST['zamawiam'])){
   
   $query = "INSERT INTO zamowienia (data_zamowienia, adres_ip_zamawiajacego, imie, nazwisko, email, ulica, numer_domu, miejscowosc, kod_pocztowy, kraj, zamowione_produkty, wysylka) VALUES ('$data', '$adres_ip', '$imie', '$nazwisko', '$email', '$ulica', '$numer_domu', '$miejscowosc', '$kod_pocztowy', '$kraj', '$id_przedmiot_array', '$wysylka');";
   mysqli_query($db, $query);
+  
+  $query = "DELETE FROM koszyk_ip WHERE adres_ip LIKE '$adres_ip'";
+  mysqli_query($db, $query);
   echo "<script>
-    const Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        showCloseButton: true,
-      })
-      
-      Toast.fire({
-        icon: 'success',
-        title: 'Pomyślnie złożono zamówienie'
-      })
-  </script>";
-
+      window.location.href = '../index.php';
+    </script>";
 }   
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -64,10 +52,43 @@ if(isset($_POST['zamawiam'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="style.css">
     <style>
+header{
+  background-color: orange;
+  color: white;
+  padding: 20px;
+  text-align: left;
+  }
 
+nav ul{
+  margin-bottom: 40px;
+  list-style: none;
+  padding: 0;
+}
+nav ul li{
+  display: inline;
+  text-decoration: none;
+}
+#obraz {
+  height: 150px;
+  width: auto;
+  object-fit: contain;
+}
+#karta{
+  margin: 20px;
+}
+footer{
+  background-color: gray;
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+#text {
+    margin-left: 100px;
+}
 </style>
 
 </head>
@@ -77,7 +98,7 @@ if(isset($_POST['zamawiam'])){
     <nav>
       <ul>
       <li><a href="../index.php">Strona główna</a></li>
-        <li><a href="#">Koszyk</a></li>
+        <li><a href="../koszyk/index.php">Koszyk</a></li>
       </ul>
     </nav>
   </header>
@@ -169,8 +190,4 @@ if(isset($_POST['zamawiam'])){
   </footer>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
-<script>
-
-</script>
-
 </html>

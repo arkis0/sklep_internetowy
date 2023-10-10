@@ -68,6 +68,7 @@ if(isset($_POST['awaryjnyResetKoszyka'])){
                 while ($przedmioty_row = $przedmioty_result->fetch_object()) {
                   echo"<td>".$przedmioty_row->nazwa."</td>";
                   echo"<td>".$przedmioty_row->opis."</td>";
+                  echo"<td class='price'>".$przedmioty_row->cena." zł</td>";
                   if (!empty($przedmioty_row->grafika)) {
                     echo "<td><img src='data:image/jpeg;base64," . base64_encode($przedmioty_row->grafika) ."' class='card-img-top' alt='' id='obraz'></td>";                  
                   }
@@ -91,6 +92,7 @@ if(isset($_POST['awaryjnyResetKoszyka'])){
           echo"<tr>";
           echo"<td></td>";
           echo"<td></td>";
+          echo"<td id='priceSummary'>Razem: </td>";
           echo"<td></td>";
           echo"<td><button type='button' class='btn btn-primary' onclick='checkout()'>Przejdź do dostawy</button></td>";
           echo"</tr>";
@@ -114,6 +116,14 @@ $db->close();
   function checkout(){
     location.href='../checkout/index.php'
   }
+  //Once site loaded get values from td's with class price and sum them up and display in td with id priceSummary
+  $(document).ready(function(){
+    var sum = 0;
+    $('.price').each(function() {
+      sum += parseFloat($(this).text());
+    });
+    $('#priceSummary').append(sum + " zł");
+  });
 </script>
 
 </html>

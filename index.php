@@ -60,6 +60,7 @@ if(isset($_POST['dodajDoKoszyka'])){ //check if form was submitted
                 }
                 echo "          <div class='card-body'>";
                 echo "                  <h5 class='card-title'>" . $row->nazwa . "</h5>";
+                echo "                    <h6 class='card-subtitle mb-2 text-muted'>". $row->cena ." zł</h6>";
                 echo "                  <p class='card-text'>" . $row->opis . "</p>";
                 echo "                    <form method='post' action=''>";
                 echo "                    <input type='number'value=". $row->id ." hidden name='id_przedmiot'></input>";
